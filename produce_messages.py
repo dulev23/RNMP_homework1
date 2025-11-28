@@ -1,8 +1,6 @@
 import json
 import time
-
 from kafka import KafkaProducer
-
 import random
 
 keys = ['A', 'B', 'C', 'D']
@@ -23,4 +21,5 @@ while True:
         topic="sensors",
         value=json.dumps(record).encode("utf-8")
     )
+    producer.flush()
     time.sleep(random.randint(500, 2000) / 1000.0)

@@ -2,11 +2,11 @@ from kafka import KafkaConsumer
 
 # Kafka configuration
 bootstrap_servers = 'localhost:9092'
-topic = 'sensors'
+topic = ["result1", "result2"]
 # TODO change the name of the topic here (result1 or result2) to verify that Flink produces the wanted results
 
 # Create a Kafka consumer
-consumer = KafkaConsumer(topic,
+consumer = KafkaConsumer(*topic,
                          bootstrap_servers=bootstrap_servers,
                          group_id='my_consumer_group',
                          auto_offset_reset='earliest',  # Start reading from the beginning if no offset is stored
